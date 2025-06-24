@@ -1,0 +1,26 @@
+{
+  "canisters": {
+    "snatia_backend": {
+      "main": "src/snatia_backend/main.mo",
+      "type": "motoko"
+    },
+    "snatia_frontend": {
+      "dependencies": [
+        "snatia_backend"
+      ],
+      "source": [
+        "src/snatia_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "snatia_frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}

@@ -1,30 +1,27 @@
-import { useState } from 'react';
-import { snatia_backend } from 'declarations/snatia_backend';
+import React, { useState } from 'react';
+import './App.css';
+import VotingPage from './components/VotingPage';
+import ResultsPage from './components/ResultsPage';
+import VoterListPage from './components/VoterListPage'; // Tambahkan VoterListPage
 
+// Component utama dengan navigasi antara halaman Voting, Hasil, dan Daftar Pemilih.
 function App() {
-  const [greeting, setGreeting] = useState('');
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    const name = event.target.elements.name.value;
-    snatia_backend.greet(name).then((greeting) => {
-      setGreeting(greeting);
-    });
-    return false;
-  }
+  const [currentPage, setCurrentPage] = useState('voting'); // Navigasi halaman
 
   return (
-    <main>
-      <img src="/logo2.svg" alt="DFINITY logo" />
-      <br />
-      <br />
-      <form action="#" onSubmit={handleSubmit}>
-        <label htmlFor="name">Enter your name: &nbsp;</label>
-        <input id="name" alt="Name" type="text" />
-        <button type="submit">Click Me!</button>
-      </form>
-      <section id="greeting">{greeting}</section>
-    </main>
+    <div className="app">
+      <div className="container">
+        {currentPage === 'voting' ? (
+          <VotingPage navigateToResults={() => setCurrentPage('results')} navigateToVoterList={() => setCurrentPage('voterlist')} />
+        ) : currentPage === 'results' ? (
+          <ResultsPage navigateToVoting={() => setCurrentPage('voting')} navigateToVoterList={() => setCurrentPage('voterlist')} />
+        ) : currentPage === 'voterlist' ? (
+          <VoterListPage navigateToVoting={() => setCurrentPage('voting')} navigateToResults={() => setCurrentPage('results')} />
+        ) : (
+          <VotingPage navigateToResults={() => setCurrentPage('results')} navigateToVoterList={() => setCurrentPage('voterlist')} />
+        )}
+      </div>
+    </div>
   );
 }
 

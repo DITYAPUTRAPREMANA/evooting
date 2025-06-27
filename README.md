@@ -1,10 +1,6 @@
-# `snatia`
+This project is a web-based e-voting system designed to allow users to securely vote for candidates in a transparent and efficient manner. The system ensures that each voter can cast their vote only once, preventing duplicate voting. With a user-friendly interface, voters can easily select their preferred candidate, and the system records their votes in real-time. The voting results are displayed immediately, showing the total votes for each candidate in a clear and structured manner.
 
-Welcome to your new `snatia` project and to the Internet Computer development community. By default, creating a new project adds this README and some template files to your project directory. You can edit these template files to customize your project and to include your own code to speed up the development cycle.
-
-To get started, you might want to explore the project directory structure and the default configuration file. Working with this project in your development environment will not affect any production deployment or identity tokens.
-
-To learn more before you start working with `snatia`, see the following documentation available online:
+Additionally, the system features a voter list page that displays the names of all users who have voted and the candidate they selected. This promotes accountability and transparency in the voting process. By combining robust backend functionality with a responsive frontend, this e-voting system provides a reliable, scalable, and tamper-proof digital solution for conducting elections.
 
 - [Quick Start](https://internetcomputer.org/docs/current/developer-docs/setup/deploy-locally)
 - [SDK Developer Tools](https://internetcomputer.org/docs/current/developer-docs/setup/install)

@@ -1,5 +1,6 @@
 import Array "mo:base/Array";
 import Text "mo:base/Text";
+import Prim "mo:⛔";
 
 actor Snatia {
 
@@ -8,6 +9,12 @@ actor Snatia {
   type Voter = {
     name: Text;         // Nama pemilih
     votedFor: Nat;      // Index kandidat yang dipilih
+  };
+
+  // Definisikan tipe Metrics
+  type Metrics = {
+    canister_memory_size : Nat;
+    cycles : Nat;
   };
 
   var candidates: [Candidate] = ["Adit", "Manik", "Yudi"]; // Daftar kandidat
@@ -103,5 +110,15 @@ actor Snatia {
   public query func checkVoterStatus(voterName: Text): async Bool {
     return hasVoted(voterName);
   };
+
+  // Fungsi get_subnet_metrics
+  public shared func get_subnet_metrics() : async Metrics {
+    let memory = Prim.rts_memory_size();
+    let cycles = Prim.cyclesBalance();
+    {
+      canister_memory_size = memory;
+      cycles = cycles;
+    }
+  }
 
 };
